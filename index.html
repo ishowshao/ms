@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>MyStock</title>
+</head>
+<body>
+    <div>
+        <form>
+            <label>Set Total Money<input type="number" id="money" name="money"></label>
+        </form>
+    </div>
+    <script src="js/jquery-2.1.4.js"></script>
+    <script>
+        jQuery.getJSON('api/total-money.php', function (response) {
+            if (response.success) {
+                jQuery('#money').val(response.money);
+            } else {
+                console.error(response);
+            }
+        });
+        jQuery('#money').on('blur', function () {
+            jQuery.post('api/total-money.php', {money: this.value}, function (response) {
+                console.log(response);
+            });
+        });
+    </script>
+</body>
+</html>
