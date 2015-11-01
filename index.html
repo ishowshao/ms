@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html ng-app="MyStock">
+<html ng-app="myStock">
 <head>
     <meta charset="utf-8">
     <title>MyStock</title>
     <style>
         body {
             font: 16px Helvetica, arial, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+        }
+        .block {
+            display: block;
         }
     </style>
     <script src="js/angular.min.js"></script>
@@ -15,8 +18,10 @@
 <body ng-controller="Main">
     <div>
         <form>
-            <label>总资金<input type="number" id="money" name="money" ng-model="money"></label>
-            <label>设置风险<input type="number">%</label>
+            <label class="block">基础设置</label>
+            <label class="block">总资金<input type="number" ng-model="settings.money"></label>
+            <label class="block">设置风险<input type="number" ng-model="settings.risk">%</label>
+            <input type="submit" ng-click="saveSettings(settings)" value="保存">
         </form>
     </div>
 </body>
