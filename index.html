@@ -15,14 +15,23 @@
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
 </head>
-<body ng-controller="Main">
-    <div>
+<body>
+    <div ng-controller="settings">
         <form>
             <label class="block">基础设置</label>
             <label class="block">总资金<input type="number" ng-model="settings.money"></label>
             <label class="block">设置风险<input type="number" ng-model="settings.risk">%</label>
             <input type="submit" ng-click="saveSettings(settings)" value="保存">
         </form>
+    </div>
+    <div ng-controller="stock">
+        <h1>持仓列表</h1>
+        <div>
+            <span>股票</span>
+            <span>当前价</span>
+            <span>成本价</span>
+            <span>盈亏</span>
+        </div>
     </div>
 </body>
 </html>

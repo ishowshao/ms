@@ -1,4 +1,4 @@
-myStock.controller('Main', ['$scope', '$http', function ($scope, $http) {
+myStock.controller('settings', ['$scope', '$http', function ($scope, $http) {
     $scope.settings = {};
 
 
@@ -19,4 +19,8 @@ myStock.controller('Main', ['$scope', '$http', function ($scope, $http) {
         });
         console.log('Save', settings);
     };
+}]);
+
+myStock.controller('stock', ['$scope', '$http', function () {
+
 }]);
