@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="MyStock">
 <head>
     <meta charset="utf-8">
     <title>MyStock</title>
@@ -8,28 +8,16 @@
             font: 16px Helvetica, arial, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
         }
     </style>
+    <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
 </head>
-<body>
+<body ng-controller="Main">
     <div>
         <form>
-            <label>总资金<input type="number" id="money" name="money"></label>
+            <label>总资金<input type="number" id="money" name="money" ng-model="money"></label>
             <label>设置风险<input type="number">%</label>
         </form>
     </div>
-    <script src="js/jquery-2.1.4.js"></script>
-    <script>
-        jQuery.getJSON('api/total-money.php', function (response) {
-            if (response.success) {
-                jQuery('#money').val(response.money);
-            } else {
-                console.error(response);
-            }
-        });
-        jQuery('#money').on('blur', function () {
-            jQuery.post('api/total-money.php', {money: this.value}, function (response) {
-                console.log(response);
-            });
-        });
-    </script>
 </body>
 </html>
