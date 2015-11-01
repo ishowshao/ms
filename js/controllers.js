@@ -14,6 +14,9 @@ myStock.controller('Main', ['$scope', '$http', function ($scope, $http) {
     //});
 
     $scope.saveSettings = function (settings) {
+        $http.post('api/settings.php', settings).success(function (data) {
+            console.log(data);
+        });
         console.log('Save', settings);
     };
 }]);

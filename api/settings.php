@@ -6,29 +6,33 @@ if (!isset($_SESSION['login'])) {
 
 require_once 'mongo.php';
 
-if (!isset($_POST['money'])) {
-    $response = array('success' => true, 'money' => 0);
+$method = $_SERVER['REQUEST_METHOD'];
+
+if ($method === 'GET') {
+    $response = array('money' => 0, 'risk' => 0);
     // read
     $db = connectMongo();
     $collection = $db->selectCollection('settings');
-    $result = $collection->findOne(array('_id' => 'money'));
-    if ($result && isset($result['value'])) {
-        $response['money'] = intval($result['value']);
+    $result = $collection->findOne(array('_id' => 'default'));
+    if ($result) {
+        $response['money'] = intval($result['money']);
+        $response['risk'] = intval($result['risk']);
     }
     echo json_encode($response);
     exit;
 }
 
-if (isset($_POST['money'])) {
-    $value = intval($_POST['money']);
+if ($method === 'POST') {
+    $body = file_get_contents('php://input');
+    $data = json_decode($body);
 
-    $response = array('success' => true, 'money' => $value);
+    if ($data) {
 
-    $db = connectMongo();
-    $collection = $db->selectCollection('settings');
+        $db = connectMongo();
+        $collection = $db->selectCollection('settings');
 
-    $collection->update(array('_id' => 'money'), array('value' => $value));
-
-    echo json_encode($response);
+        $collection->update(array('_id' => 'default'), $data);
+    }
+    echo $body;
     exit;
 }
