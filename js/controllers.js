@@ -20,6 +20,8 @@ myStock.controller('stock', ['$scope', '$http', function ($scope, $http) {
         {code: '100001', name: '上证', amount: 100, costPrice: 10000, currentPrice: 9999, pl: 1, plRate: 0.1, todo: ''}
     ];
     $scope.suggests = [];
+    $scope.operation = 'buy';
+    $scope.amount = 100;
     $scope.$watch('code', function (value) {
         if (value) {
             $http.get('api/suggest.php?key=' + encodeURIComponent(value)).success(function (data) {

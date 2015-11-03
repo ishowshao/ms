@@ -27,11 +27,22 @@ if ($method === 'POST') {
     $data = json_decode($body);
 
     if ($data) {
+        $template = array('id' => '', 'code' => '', 'amount' => 100, 'cost' => 1, 'operation' => 'buy');
+        $valid = true;
+        foreach ($template as $k => $v) {
+            if (empty($data[$k])) { // 肯定不能空，另外cost不太可能0
+                $valid = false;
+                break;
+            } else {
+                $template[$k] = $data[$k];
+            }
+        }
 
-        $db = connectMongo();
-        $collection = $db->selectCollection('settings');
-
-        $collection->update(array('_id' => 'default'), $data);
+        if ($valid) {
+            $db = connectMongo();
+            $collection = $db->selectCollection('operations');
+            $collection->insert($template);
+        }
     }
     echo $body;
     exit;
