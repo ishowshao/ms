@@ -61,17 +61,17 @@
         </table>
     </div>
     <div ng-controller="operation">
-        <h2>添加操作记录</h2>
+        <h1>添加操作记录</h1>
         <form>
-            <label>代码<input type="text" ng-model="code" ng-model-options="{ debounce: 500 }" required></label>
-            <label>数量<input type="number" ng-model="amount" min="0" required></label>
-            <label>操作后成本价<input type="number" ng-model="cost" step="0.01" required></label>
-            <label><input type="text" ng-model="id" required readonly></label>
-            <select ng-model="operation">
+            <label>代码<input type="text" ng-model="record.code" ng-model-options="{ debounce: 500 }" required></label>
+            <label>数量<input type="number" ng-model="record.amount" min="0" required></label>
+            <label>操作后成本价<input type="number" ng-model="record.cost" step="0.01" required></label>
+            <label><input type="text" ng-model="record.id" required readonly></label>
+            <select ng-model="record.operation">
                 <option value="buy">买入</option>
                 <option value="sale">卖出</option>
             </select>
-            <input type="submit" value="添加" ng-click="addStock()">
+            <input type="submit" value="添加" ng-click="addRecord()">
             <div ng-show="suggests.length" class="suggests">
                 <div ng-repeat="suggest in suggests" ng-click="selectSuggest(suggest)" class="suggest">{{suggest.code}},{{suggest.id}},{{suggest.name}}</div>
             </div>

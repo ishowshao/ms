@@ -19,30 +19,28 @@ myStock.controller('stock', ['$scope', '$http', function ($scope, $http) {
     $scope.stocks = [
         {code: '100001', name: '上证', amount: 100, costPrice: 10000, currentPrice: 9999, pl: 1, plRate: 0.1, todo: ''}
     ];
+}]);
+
+myStock.controller('operation', ['$scope', '$http', function ($scope, $http) {
+    $scope.record = {
+        amount: 100,
+        operation: 'buy'
+    };
     $scope.suggests = [];
-    $scope.operation = 'buy';
-    $scope.amount = 100;
-    $scope.$watch('code', function (value) {
+    $scope.$watch('record.code', function (value) {
         if (value) {
             $http.get('api/suggest.php?key=' + encodeURIComponent(value)).success(function (data) {
-                console.log(data);
                 $scope.suggests = data;
             });
         }
     });
     $scope.selectSuggest = function (suggest) {
-        $scope.code = suggest.code;
-        $scope.id = suggest.id;
+        $scope.record.code = suggest.code;
+        $scope.record.id = suggest.id;
     };
-    $scope.addStock = function () {
-        $http.post('api/stock.php', {
-            code: $scope.code,
-            id: $scope.id,
-            amount: $scope.amount
-        }).success(function (data) {
+    $scope.addRecord = function () {
+        $http.post('api/stock.php', $scope.record).success(function (data) {
             console.log(data);
         });
     };
 }]);
-
-myStock.controller
