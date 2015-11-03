@@ -44,3 +44,5 @@ myStock.controller('stock', ['$scope', '$http', function ($scope, $http) {
         });
     };
 }]);
+
+myStock.controller

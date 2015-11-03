@@ -59,6 +59,8 @@
                 <td>{{stock.todo}}</td>
             </tr>
         </table>
+    </div>
+    <div ng-controller="operation">
         <h2>添加操作记录</h2>
         <form>
             <label>代码<input type="text" ng-model="code" ng-model-options="{ debounce: 500 }" required></label>
