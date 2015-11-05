@@ -71,6 +71,8 @@
                 <option value="buy">买入</option>
                 <option value="sale">卖出</option>
             </select>
+            <input type="date" ng-model="record.date" required>
+            <input type="time" ng-model="record.time" required>
             <input type="submit" value="添加" ng-click="addRecord()">
             <div ng-show="suggests.length" class="suggests">
                 <div ng-repeat="suggest in suggests" ng-click="selectSuggest(suggest)" class="suggest">{{suggest.code}},{{suggest.id}},{{suggest.name}}</div>

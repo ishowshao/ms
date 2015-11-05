@@ -39,7 +39,7 @@ myStock.controller('operation', ['$scope', '$http', function ($scope, $http) {
         $scope.record.id = suggest.id;
     };
     $scope.addRecord = function () {
-        $http.post('api/stock.php', $scope.record).success(function (data) {
+        $http.post('api/operation.php', $scope.record).success(function (data) {
             console.log(data);
         });
     };

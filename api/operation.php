@@ -24,10 +24,10 @@ if ($method === 'GET') {
 
 if ($method === 'POST') {
     $body = file_get_contents('php://input');
-    $data = json_decode($body);
+    $data = json_decode($body, true);
 
     if ($data) {
-        $template = array('id' => '', 'code' => '', 'amount' => 100, 'cost' => 1, 'operation' => 'buy');
+        $template = array('id' => '', 'code' => '', 'amount' => 100, 'cost' => 1, 'operation' => 'buy', 'date' => '');
         $valid = true;
         foreach ($template as $k => $v) {
             if (empty($data[$k])) { // 肯定不能空，另外cost不太可能0
