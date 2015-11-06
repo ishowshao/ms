@@ -1,0 +1,27 @@
+<div ng-controller="stock">
+    <h1 class="page-header">持仓列表</h1>
+    <table>
+        <thead>
+        <tr>
+            <td>代码</td>
+            <td>名称</td>
+            <td>数量</td>
+            <td>成本价</td>
+            <td>当前价</td>
+            <td>盈亏</td>
+            <td>盈亏比例</td>
+            <td>操作指引</td>
+        </tr>
+        </thead>
+        <tr ng-repeat="stock in stocks">
+            <td>{{stock.code}}</td>
+            <td>{{stock.name}}</td>
+            <td>{{stock.amount}}</td>
+            <td>{{stock.costPrice}}</td>
+            <td>{{stock.currentPrice}}</td>
+            <td>{{stock.pl}}</td>
+            <td>{{stock.plRate}}%</td>
+            <td>{{stock.todo}}</td>
+        </tr>
+    </table>
+</div>

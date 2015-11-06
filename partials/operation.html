@@ -1,0 +1,19 @@
+<div ng-controller="operation">
+    <h1 class="page-header">添加操作记录</h1>
+    <form>
+        <label>代码<input type="text" ng-model="record.code" ng-model-options="{ debounce: 500 }" required></label>
+        <label>数量<input type="number" ng-model="record.amount" min="0" required></label>
+        <label>操作后成本价<input type="number" ng-model="record.cost" step="0.01" required></label>
+        <label><input type="text" ng-model="record.id" required readonly></label>
+        <select ng-model="record.operation">
+            <option value="buy">买入</option>
+            <option value="sale">卖出</option>
+        </select>
+        <input type="date" ng-model="record.date" required>
+        <input type="time" ng-model="record.time" required>
+        <input type="submit" value="添加" ng-click="addRecord()">
+        <div ng-show="suggests.length" class="suggests">
+            <div ng-repeat="suggest in suggests" ng-click="selectSuggest(suggest)" class="suggest">{{suggest.code}},{{suggest.id}},{{suggest.name}}</div>
+        </div>
+    </form>
+</div>

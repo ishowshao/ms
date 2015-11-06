@@ -1,0 +1,8 @@
+<div ng-controller="settings">
+    <h1 class="page-header">基础设置</h1>
+    <form>
+        <label class="block">总资金<input type="number" ng-model="settings.money"></label>
+        <label class="block">设置风险<input type="number" ng-model="settings.risk">%</label>
+        <input type="submit" ng-click="saveSettings(settings)" value="保存">
+    </form>
+</div>

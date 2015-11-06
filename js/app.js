@@ -1,1 +1,3 @@
-var myStock = angular.module('myStock', []);
+var myStock = angular.module('myStock', [
+    'ngRoute',
+]);
