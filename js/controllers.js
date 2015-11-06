@@ -1,4 +1,6 @@
-myStock.controller('settings', ['$scope', '$http', function ($scope, $http) {
+var controllers = angular.module('controllers', []);
+
+controllers.controller('settings', ['$scope', '$http', function ($scope, $http) {
     $scope.settings = {};
 
 
@@ -15,13 +17,13 @@ myStock.controller('settings', ['$scope', '$http', function ($scope, $http) {
     };
 }]);
 
-myStock.controller('stock', ['$scope', '$http', function ($scope, $http) {
+controllers.controller('stock', ['$scope', '$http', function ($scope, $http) {
     $scope.stocks = [
         {code: '100001', name: '上证', amount: 100, costPrice: 10000, currentPrice: 9999, pl: 1, plRate: 0.1, todo: ''}
     ];
 }]);
 
-myStock.controller('operation', ['$scope', '$http', function ($scope, $http) {
+controllers.controller('operation', ['$scope', '$http', function ($scope, $http) {
     $scope.record = {
         amount: 100,
         operation: 'buy'
